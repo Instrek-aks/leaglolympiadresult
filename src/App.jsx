@@ -143,46 +143,47 @@ export default function App() {
     setRollNumber('');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
-
   const renderHome = () => (
     <>
-      <section className="container py-20 relative">
-        <div className="bg-stripes"></div>
-        <div className="hero-layout relative z-10">
-          <div className="pr-12">
-            <div className="flex items-center gap-4 mb-6">
-              <div style={{ height: '2px', backgroundColor: '#c39b62', width: '2rem' }}></div>
-              <span className="text-[10px] tracking-[0.2em] uppercase font-bold" style={{ color: '#c39b62' }}>Results - Opening 2026</span>
+      <div style={{ backgroundColor: 'white', width: '100%', position: 'relative' }}>
+        <section className="container relative" style={{ padding: '6rem 0' }}>
+          <div className="bg-stripes"></div>
+          <div className="hero-layout relative z-10">
+            <div className="pr-12">
+              <div className="flex items-center gap-4 mb-6">
+                <div style={{ height: '1px', backgroundColor: '#c39b62', width: '2rem' }}></div>
+                <span className="text-[10px] tracking-[0.2em] uppercase font-bold" style={{ color: '#c39b62' }}>Results - Session 2026</span>
+              </div>
+              <h1 className="text-5xl lg:text-6xl font-serif text-navy mb-6 leading-tight">
+                Announcing the <br/><span className="text-gold italic">Legal Olympiad</span> 2026<br/>results
+              </h1>
+              <p className="text-muted text-base lg:text-lg max-w-xl pr-8 mt-6">
+                Conducted on 28 March 2026 across participating universities. Students may access their individual standing, view category awards, and review the honour roll below.
+              </p>
             </div>
-            <h1 className="text-5xl lg:text-6xl font-serif text-navy mb-6 leading-tight">
-              Announcing the <br/><span className="text-gold italic">Legal Olympiad</span> 2026<br/>results
-            </h1>
-            <p className="text-muted text-base lg:text-lg max-w-xl pr-8 mt-6">
-              Conducted on 28 March 2026 across participating universities. Students may access their individual standing, view category awards, and review the honour roll below.
-            </p>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', backgroundColor: 'white', border: '1px solid #f3f4f6', marginTop: '2.5rem', alignSelf: 'start', height: 'fit-content', whiteSpace: 'nowrap', width: 'fit-content', justifySelf: 'start' }}>
+              <div style={{ padding: '1.25rem 2rem', borderRight: '1px solid #f3f4f6' }}>
+                <div style={{ fontSize: '8px', textTransform: 'uppercase', letterSpacing: '0.2em', color: '#9ca3af', marginBottom: '0.75rem', fontWeight: 'bold' }}>Exam Date</div>
+                <div className="font-serif text-navy pt-1" style={{ fontSize: '15px', lineHeight: '1.3' }}>28 Mar<br />2026</div>
+              </div>
+              <div style={{ padding: '1.25rem 2rem', borderRight: '1px solid #f3f4f6' }}>
+                <div style={{ fontSize: '8px', textTransform: 'uppercase', letterSpacing: '0.2em', color: '#9ca3af', marginBottom: '0.75rem', fontWeight: 'bold' }}>Questions</div>
+                <div className="font-serif text-navy pt-2" style={{ fontSize: '15px' }}>80</div>
+              </div>
+              <div style={{ padding: '1.25rem 2rem', borderRight: '1px solid #f3f4f6' }}>
+                <div style={{ fontSize: '8px', textTransform: 'uppercase', letterSpacing: '0.2em', color: '#9ca3af', marginBottom: '0.75rem', fontWeight: 'bold' }}>Programs</div>
+                <div className="font-serif text-navy pt-2" style={{ fontSize: '15px' }}>3-Yr - 5-Yr</div>
+              </div>
+              <div style={{ padding: '1.25rem 2rem' }}>
+                <div style={{ fontSize: '8px', textTransform: 'uppercase', letterSpacing: '0.2em', color: '#9ca3af', marginBottom: '0.75rem', fontWeight: 'bold' }}>Published</div>
+                <div className="font-serif text-navy pt-1" style={{ fontSize: '15px', lineHeight: '1.3' }}>17 Apr<br />2026</div>
+              </div>
+            </div>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', backgroundColor: 'white', border: '1px solid #e5e7eb', marginTop: '2.5rem', alignSelf: 'start', height: 'fit-content' }}>
-            <div style={{ padding: '1.5rem 2rem', borderBottom: '1px solid #e5e7eb', borderRight: '1px solid #e5e7eb' }}>
-              <div style={{ fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.2em', color: '#6b7280', marginBottom: '0.5rem', fontWeight: 'bold' }}>Exam Date</div>
-              <div className="font-serif text-navy pt-1" style={{ fontSize: '1.75rem', lineHeight: '1.2' }}>28 Mar<br />2026</div>
-            </div>
-            <div style={{ padding: '1.5rem 2rem', borderBottom: '1px solid #e5e7eb' }}>
-              <div style={{ fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.2em', color: '#6b7280', marginBottom: '0.5rem', fontWeight: 'bold' }}>Questions</div>
-              <div className="font-serif text-navy pt-2" style={{ fontSize: '2rem' }}>80</div>
-            </div>
-            <div style={{ padding: '1.5rem 2rem', borderRight: '1px solid #e5e7eb' }}>
-              <div style={{ fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.2em', color: '#6b7280', marginBottom: '0.5rem', fontWeight: 'bold' }}>Programs</div>
-              <div className="font-serif text-navy pt-2" style={{ fontSize: '1.5rem' }}>3-Yr - 5-Yr</div>
-            </div>
-            <div style={{ padding: '1.5rem 2rem' }}>
-              <div style={{ fontSize: '9px', textTransform: 'uppercase', letterSpacing: '0.2em', color: '#6b7280', marginBottom: '0.5rem', fontWeight: 'bold' }}>Published</div>
-              <div className="font-serif text-navy pt-1" style={{ fontSize: '1.5rem', lineHeight: '1.2' }}>17 Apr<br />2026</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="border-t bg-white pt-16 pb-24 relative z-20">
+        </section>
+      </div>
+      
+      <section className="border-t bg-white relative z-20" style={{ paddingTop: '6rem', paddingBottom: '7rem' }}>
         <div className="container">
           <div className="flex justify-between items-end mb-10">
             <div>
@@ -259,7 +260,7 @@ export default function App() {
         </div>
       </section>
 
-      <section className="bg-bg-cream py-20 border-t border-slate-200 relative z-10">
+      <section className="bg-bg-cream border-t border-slate-200 relative z-10" style={{ paddingTop: '7rem', paddingBottom: '6rem' }}>
         <div className="container">
           <div className="flex justify-between items-end mb-8">
             <div>
@@ -312,7 +313,7 @@ export default function App() {
         </div>
       </section>
 
-      <section className="bg-bg-cream pb-32">
+      <section className="bg-bg-cream" style={{ paddingBottom: '8rem' }}>
         <div className="container">
           <div className="flex justify-between items-end mb-12">
             <div>
@@ -573,22 +574,22 @@ export default function App() {
   return (
     <div className="font-sans text-navy min-h-screen bg-bg-cream flex flex-col">
       {/* Top bar */}
-      <div className="bg-navy text-white text-[10px] tracking-widest font-bold uppercase px-6 py-2.5 flex justify-between items-center relative z-50">
-        <div>Legal Olympiad - Official Results Portal</div>
-        <div className="flex gap-6">
-          <a href="#" className="hover:text-gold transition-colors">My Result</a>
-          <a href="#" className="hover:text-gold transition-colors">Hall of Fame</a>
-          <a href="#" className="hover:text-gold transition-colors">Awards</a>
+      <div className="bg-navy text-[9px] tracking-[0.15em] px-6 py-3 flex justify-between items-center relative z-50 uppercase">
+        <div><span style={{ color: 'white', opacity: 0.95 }}>Legal Olympiad</span> <span style={{ opacity: 0.5, margin: '0 0.75rem', color: 'white' }}>-</span> <span style={{ color: '#9ca3af' }}>Official Results Portal</span></div>
+        <div className="flex gap-6" style={{ color: '#9ca3af' }}>
+          <a href="#" className="hover:text-white transition-colors">My Result</a>
+          <a href="#" className="hover:text-white transition-colors">Hall of Fame</a>
+          <a href="#" className="hover:text-white transition-colors">Awards</a>
         </div>
       </div>
 
       {/* Main header */}
       <header className="bg-white border-b px-6 py-5 flex justify-between items-center sticky top-0 z-40 shadow-sm">
         <div className="flex items-center gap-4 cursor-pointer" onClick={clearSearch}>
-          <div className="bg-navy text-gold p-2 font-serif font-bold text-xl leading-none">LO</div>
+          <div className="bg-navy text-gold p-2 font-serif font-bold text-xl leading-none" style={{ width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>LO</div>
           <div>
-            <div className="font-serif italic text-navy text-xl leading-none mb-1">Legal Olympiad</div>
-            <div className="text-[9px] text-muted tracking-[0.2em] font-bold uppercase mt-1">Examination 2026</div>
+            <div className="font-serif text-navy text-[22px] leading-none mb-1 mt-0.5">Legal Olympiad</div>
+            <div className="text-[9px] tracking-[0.2em] uppercase mt-1" style={{ color: '#9ca3af' }}>Examination 2026</div>
           </div>
         </div>
         <nav className="flex gap-8 text-sm font-medium">
