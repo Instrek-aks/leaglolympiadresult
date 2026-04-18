@@ -151,7 +151,7 @@ export default function App() {
           <div className="bg-stripes"></div>
           <div className="hero-layout relative z-10">
             <div className="lg:pr-12">
-              <div className="flex items-center gap-4 mb-6">
+              <div className="flex items-center gap-4 mb-6 hero-subtitle-container">
                 <div style={{ height: '1px', backgroundColor: '#c39b62', width: '2rem' }}></div>
                 <span className="text-[10px] tracking-[0.2em] uppercase font-bold" style={{ color: '#c39b62' }}>Results - Session 2026</span>
               </div>
@@ -652,20 +652,14 @@ export default function App() {
               <a href="#awards" className="text-white hover:text-white transition-colors duration-200 text-[10px] lg:text-[11px] font-bold">Awards</a>
             </div>
 
-            {/* Mobile Hamburger Button */}
-            <button 
-              className="sm:hidden text-white p-1 -mr-1 focus:outline-none"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label="Toggle menu"
-            >
-              {isMenuOpen ? <X size={22} strokeWidth={1.5} /> : <Menu size={22} strokeWidth={1.5} />}
-            </button>
+
+            {/* Mobile Menu Button Removed as per request */}
           </div>
         </div>
 
         {/* Mobile Slide-down Menu */}
-        <div className={`sm:hidden bg-[#061324] transition-all duration-300 ease-in-out overflow-hidden ${isMenuOpen ? 'max-h-20 opacity-100' : 'max-h-0 opacity-0'}`}>
-          <div className="container py-4 flex flex-row items-center justify-center gap-10">
+        <div className={`sm:hidden bg-[#061324] transition-all duration-300 ease-in-out overflow-hidden ${isMenuOpen ? 'max-h-24 opacity-100' : 'max-h-0 opacity-0'}`}>
+          <div className="container py-4 flex flex-row items-center justify-center gap-10 mobile-menu-inner">
             <a href="#lookup" onClick={() => setIsMenuOpen(false)} className="mobile-nav-link text-white hover:text-white transition-colors font-bold uppercase whitespace-nowrap">My Result</a>
             <a href="#honour-roll" onClick={() => setIsMenuOpen(false)} className="mobile-nav-link text-white hover:text-white transition-colors font-bold uppercase whitespace-nowrap">Hall of Fame</a>
             <a href="#awards" onClick={() => setIsMenuOpen(false)} className="mobile-nav-link text-white hover:text-white transition-colors font-bold uppercase whitespace-nowrap">Awards</a>
