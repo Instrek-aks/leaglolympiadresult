@@ -182,11 +182,11 @@ export default function App() {
       {/* TOPBAR */}
       <div className="topbar">
         <div className="topbar-inner">
-          <div>Legal Olympiad <span style={{ color: 'var(--gold)', margin: '0 0.5rem' }}>·</span> Official Results Portal</div>
+          <div>Legal Olympiad <span style={{ color: 'var(--gold)', margin: '0 0.5rem' }}>·</span> Official Portal</div>
           <div className="topbar-right">
-            <a href="#lookup">My Result</a>
-            <a href="#hof">Rankings</a>
-            <a href="#awards">Awards</a>
+            <a href="#lookup">MY RESULT</a>
+            <a href="#hof">HALL OF FAME</a>
+            <a href="#awards">AWARDS</a>
           </div>
         </div>
       </div>
@@ -201,6 +201,7 @@ export default function App() {
               <div className="brand-sub">EXAMINATION 2026</div>
             </div>
           </div>
+          
           <nav className="brand-nav">
             <a href="#lookup">Look up result</a>
             <a href="#hof">Rankings</a>
@@ -490,7 +491,7 @@ export default function App() {
             <div className="footer-col">
               <h5>QUICK LINKS</h5>
               <ul>
-                <li><a href="#lookup">Look up result</a></li>
+                <li><a href="#lookup">My Result</a></li>
                 <li><a href="#hof">Hall of Fame</a></li>
                 <li><a href="#awards">Awards</a></li>
               </ul>
