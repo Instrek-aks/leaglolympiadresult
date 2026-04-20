@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useEffect } from 'react';
-import csvData from '../Final_Result_17-04-2026.csv?raw';
+import csvData from '../Final_Result_17-04-2026 (1).csv?raw';
 
 export default function App() {
   const [activeProgram, setActiveProgram] = useState('5');
@@ -26,7 +26,9 @@ export default function App() {
     const lines = csvData.split(/\r?\n/);
     if (lines.length === 0) return [];
     const headers = lines[0].split(csvSplitRegex).map(h => h.trim().replace(/^"|"$/g, ''));
-    const data = [];
+    
+    const recordsByRoll = new Map();
+
     for (let i = 1; i < lines.length; i++) {
         const row = lines[i];
         if (!row.trim()) continue;
@@ -34,15 +36,29 @@ export default function App() {
         const obj = {};
         headers.forEach((h, idx) => {
             let val = values[idx] ? values[idx].trim().replace(/^"|"$/g, '') : '';
-            if (obj[h] !== undefined && obj[h].length > 0) {
+            if (obj[h] !== undefined) {
                  obj[`${h}_${idx}`] = val;
             } else {
                  obj[h] = val;
             }
         });
-        data.push(obj);
+
+        const roll = obj.RollNumber?.toUpperCase();
+        if (roll) {
+          // Normalize Program (e.g. 'BA3' -> '3') and Year
+          if (obj.Program) obj.Program = obj.Program.replace(/\D/g, '');
+          if (obj.Year) obj.Year = String(obj.Year).trim();
+
+          const existing = recordsByRoll.get(roll);
+          const currentScore = parseFloat(obj['Final Score']) || 0;
+          const existingScore = existing ? (parseFloat(existing['Final Score']) || 0) : -1;
+          
+          if (currentScore > existingScore || !existing) {
+            recordsByRoll.set(roll, obj);
+          }
+        }
     }
-    return data;
+    return Array.from(recordsByRoll.values());
   }, []);
 
   // Calculate Ranks & Winners
@@ -135,6 +151,20 @@ export default function App() {
         return;
     }
 
+    const isAbsent = student.Barcode === 'ABSENT' || !student['Final Score'] || isNaN(parseFloat(student['Final Score']));
+
+    if (isAbsent) {
+      setSearchedResult({
+        ...student,
+        isAbsent: true,
+        awards: []
+      });
+      setTimeout(() => {
+          document.getElementById('result-display')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100);
+      return;
+    }
+
     // Calc individual ranks
     const programStudents = allResults.filter(r => r.Program === student.Program && r.Barcode !== 'ABSENT');
     const yearStudents = programStudents.filter(r => String(r.Year) === String(student.Year));
@@ -161,7 +191,8 @@ export default function App() {
         ...student,
         prgRank,
         yrRank,
-        awards
+        awards,
+        isAbsent: false
     });
 
     setTimeout(() => {
@@ -170,6 +201,7 @@ export default function App() {
   };
 
   const renderSeal = (s) => {
+    if (s.isAbsent) return 'NOT ATTEMPTED';
     if (s.awards.some(a => a.type === 'highest')) return 'Highest Overall Score';
     if (s.awards.some(a => a.type === 'top3' && a.rank === 1)) return 'Program Rank 01';
     if (s.awards.some(a => a.type === 'best1')) return 'Best First Year';
@@ -321,34 +353,43 @@ export default function App() {
                         <div className="meta-value">{toTitleCase(searchedResult.College)}</div>
                       </div>
                     </div>
-                    <div className="rank-grid">
-                      <div className="rank-block">
-                        <div className="rank-label">Year {searchedResult.Year} Rank</div>
-                        <div className="rank-display">
-                          <span className="rank-hash">№</span>
-                          <span className="rank-value">{searchedResult.yrRank}</span>
-                        </div>
-                        <div className="rank-note">Within the {searchedResult.Program}-Year Program, Year {searchedResult.Year} cohort.</div>
+
+                    {searchedResult.isAbsent ? (
+                      <div style={{ padding: '2.5rem 2rem', background: 'var(--ivory)', color: 'var(--ink-soft)', fontSize: '1rem', lineHeight: '1.6' }}>
+                        Our records indicate you did not attempt this examination. If this is an error, please contact the examination coordinator at your institution.
                       </div>
-                      <div className="rank-block">
-                        <div className="rank-label">Overall Program Rank</div>
-                        <div className="rank-display">
-                          <span className="rank-hash">№</span>
-                          <span className="rank-value">{searchedResult.prgRank}</span>
+                    ) : (
+                      <>
+                        <div className="rank-grid">
+                          <div className="rank-block">
+                            <div className="rank-label">Year {searchedResult.Year} Rank</div>
+                            <div className="rank-display">
+                              <span className="rank-hash">№</span>
+                              <span className="rank-value">{searchedResult.yrRank}</span>
+                            </div>
+                            <div className="rank-note">Within the {searchedResult.Program}-Year Program, Year {searchedResult.Year} cohort.</div>
+                          </div>
+                          <div className="rank-block">
+                            <div className="rank-label">Overall Program Rank</div>
+                            <div className="rank-display">
+                              <span className="rank-hash">№</span>
+                              <span className="rank-value">{searchedResult.prgRank}</span>
+                            </div>
+                            <div className="rank-note">Across all years of the {searchedResult.Program}-Year Program.</div>
+                          </div>
                         </div>
-                        <div className="rank-note">Across all years of the {searchedResult.Program}-Year Program.</div>
-                      </div>
-                    </div>
-                    <div className="awards-section">
-                      <div className="awards-label">Category Awards</div>
-                      {searchedResult.awards.length > 0 ? (
-                        searchedResult.awards.map((a, i) => (
-                          <span key={i} className="award-pill">{a.label}</span>
-                        ))
-                      ) : (
-                        <div className="no-awards">No category awards were conferred for this examination.</div>
-                      )}
-                    </div>
+                        <div className="awards-section">
+                          <div className="awards-label">Category Awards</div>
+                          {searchedResult.awards.length > 0 ? (
+                            searchedResult.awards.map((a, i) => (
+                              <span key={i} className="award-pill">{a.label}</span>
+                            ))
+                          ) : (
+                            <div className="no-awards">No category awards were conferred for this examination.</div>
+                          )}
+                        </div>
+                      </>
+                    )}
                   </div>
                 </div>
               )}
