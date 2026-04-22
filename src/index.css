@@ -509,10 +509,10 @@ section {
 
 .rank-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 0;
 }
-@media (max-width: 600px) { .rank-grid { grid-template-columns: 1fr; } }
+@media (max-width: 900px) { .rank-grid { grid-template-columns: 1fr; } }
 .rank-block {
   padding: 2rem;
   border-right: 1px solid var(--rule);
@@ -585,6 +585,43 @@ section {
   color: var(--gold);
   font-size: 0.9rem;
 }
+ 
+/* PERFORMANCE GRID */
+.performance-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-top: 0.5rem;
+}
+@media (max-width: 600px) { .performance-grid { grid-template-columns: 1fr; gap: 0.75rem; } }
+ 
+.perf-item {
+  padding: 1rem;
+  border-radius: 4px;
+  border: 1px solid transparent;
+}
+.perf-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.25rem;
+}
+.perf-value {
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: 1;
+}
+ 
+.perf-item.correct { background: var(--gold-soft); border-color: #D4B45E; color: var(--navy); }
+.perf-item.correct .perf-label { color: var(--gold); }
+ 
+.perf-item.wrong { background: var(--gold-soft); border-color: #D4B45E; color: var(--navy); }
+.perf-item.wrong .perf-label { color: var(--gold); }
+ 
+.perf-item.blank { background: var(--gold-soft); border-color: #D4B45E; color: var(--navy); }
+.perf-item.blank .perf-label { color: var(--gold); }
 
 .error-card {
   background: #FDF5F3;

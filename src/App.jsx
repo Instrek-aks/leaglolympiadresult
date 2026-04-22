@@ -377,7 +377,33 @@ export default function App() {
                             </div>
                             <div className="rank-note">Across all years of the {searchedResult.Program}-Year Program.</div>
                           </div>
+                          <div className="rank-block">
+                            <div className="rank-label">Marks Obtained</div>
+                            <div className="rank-display">
+                              <span className="rank-value">{searchedResult['Final Score']}</span>
+                              <span className="rank-hash" style={{ fontSize: '1rem', marginLeft: '0.25rem', fontStyle: 'normal' }}>/ 80</span>
+                            </div>
+                            <div className="rank-note">Final score verified by the examination board.</div>
+                          </div>
                         </div>
+                        <div className="awards-section" style={{ borderTop: '1px solid var(--rule)', background: 'var(--paper)' }}>
+                          <div className="awards-label">Performance Breakdown</div>
+                          <div className="performance-grid">
+                            <div className="perf-item correct">
+                              <div className="perf-label">Correct</div>
+                              <div className="perf-value">{searchedResult['Total Correct']}</div>
+                            </div>
+                            <div className="perf-item wrong">
+                              <div className="perf-label">Wrong</div>
+                              <div className="perf-value">{searchedResult['Total Wrong']}</div>
+                            </div>
+                            <div className="perf-item blank">
+                              <div className="perf-label">Unattempted</div>
+                              <div className="perf-value">{searchedResult['Total Blank']}</div>
+                            </div>
+                          </div>
+                        </div>
+
                         <div className="awards-section">
                           <div className="awards-label">Category Awards</div>
                           {searchedResult.awards.length > 0 ? (
@@ -445,6 +471,7 @@ export default function App() {
                   <div className="podium-meta">{e.RollNumber}</div>
                 </div>
                 <div className={`podium-medal ${e.displayRank === 1 ? 'gold' : (e.displayRank === 2 ? 'silver' : 'bronze')}`}>
+                  <div style={{ fontSize: '0.9rem', fontWeight: 700, marginBottom: '2px' }}>Score: {e['Final Score']}</div>
                   {e.displayRank === 1 ? 'First' : (e.displayRank === 2 ? 'Second' : 'Third')} Place
                 </div>
               </div>
@@ -483,7 +510,7 @@ export default function App() {
                           <div className="award-winner-bullet">✦</div>
                           <div className="award-winner-content">
                             <div className="award-winner-name">{toTitleCase(yt.student.Name)}</div>
-                            <div className="award-winner-detail">{yt.student.RollNumber} · {toTitleCase(yt.student.College)}</div>
+                            <div className="award-winner-detail">{yt.student.RollNumber} · {toTitleCase(yt.student.College)} · <span style={{ color: 'var(--gold)', fontWeight: 600 }}>Score: {yt.student['Final Score']}</span></div>
                           </div>
                         </div>
                       </div>
@@ -502,7 +529,7 @@ export default function App() {
                           <div className="award-winner-bullet">✦</div>
                           <div className="award-winner-content">
                             <div className="award-winner-name">{toTitleCase(w.Name)}</div>
-                            <div className="award-winner-detail">{w.RollNumber} · {toTitleCase(w.College)}</div>
+                            <div className="award-winner-detail">{w.RollNumber} · {toTitleCase(w.College)} · <span style={{ color: 'var(--gold)', fontWeight: 600 }}>Score: {w['Final Score']}</span></div>
                           </div>
                         </div>
                       ))}
