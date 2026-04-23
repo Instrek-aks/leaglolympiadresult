@@ -215,11 +215,6 @@ export default function App() {
       <div className="topbar">
         <div className="topbar-inner">
           <div>Legal Olympiad <span style={{ color: 'var(--gold)', margin: '0 0.5rem' }}>·</span> Official Portal</div>
-          <div className="topbar-right">
-            <a href="#lookup">MY RESULT</a>
-            <a href="#hof">HALL OF FAME</a>
-            <a href="#awards">AWARDS</a>
-          </div>
         </div>
       </div>
 
@@ -233,12 +228,6 @@ export default function App() {
               <div className="brand-sub">EXAMINATION 2026</div>
             </div>
           </div>
-          
-          <nav className="brand-nav">
-            <a href="#lookup">Look up result</a>
-            <a href="#hof">Rankings</a>
-            <a href="#awards">Awards</a>
-          </nav>
         </div>
       </header>
 
@@ -555,23 +544,6 @@ export default function App() {
             <div>
               <div className="footer-brand">Legal Olympiad <em>2026</em></div>
               <div className="footer-desc">The Legal Olympiad is an examination benchmarking legal aptitude and subject proficiency among students of 3-Year and 5-Year law programs across participating institutions.</div>
-            </div>
-            <div className="footer-col">
-              <h5>QUICK LINKS</h5>
-              <ul>
-                <li><a href="#lookup">My Result</a></li>
-                <li><a href="#hof">Hall of Fame</a></li>
-                <li><a href="#awards">Awards</a></li>
-              </ul>
-            </div>
-            <div className="footer-col">
-              <h5>ADMINISTRATION</h5>
-              <ul>
-                <li style={{ color: 'rgba(255,255,255,0.6)' }}>Examination conducted</li>
-                <li>28 March 2026</li>
-                <li style={{ marginTop: '0.75rem', color: 'rgba(255,255,255,0.6)' }}>Results published</li>
-                <li>17 April 2026</li>
-              </ul>
             </div>
           </div>
           <div className="footer-bottom">
