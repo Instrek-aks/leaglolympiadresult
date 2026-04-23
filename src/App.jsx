@@ -268,7 +268,7 @@ export default function App() {
               <h2>Access your result</h2>
               <p>Select your program and current year, then enter your roll number to view your official ranking and any category awards.</p>
             </div>
-            <div className="section-index">§ 01 / Lookup</div>
+
           </div>
 
           <div className="lookup-grid">
@@ -439,7 +439,7 @@ export default function App() {
               <h2>Honour roll <span style={{ color: 'var(--ink-muted)', fontWeight: 400, fontStyle: 'italic' }}>· top three</span></h2>
               <p>Overall top three rankings from each program, determined by Final Score across all years.</p>
             </div>
-            <div className="section-index">§ 02 / Rankings</div>
+
           </div>
 
           <div className="hof-tabs">
@@ -475,7 +475,7 @@ export default function App() {
               <h2>Category awards</h2>
               <p>Distinctions conferred for performance within defined categories.</p>
             </div>
-            <div className="section-index">§ 03 / Awards</div>
+
           </div>
 
           <div className="awards-grid">
