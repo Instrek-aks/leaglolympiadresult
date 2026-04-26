@@ -254,7 +254,7 @@ export default function App() {
             </div>
             <div className="meta-cell">
               <div className="meta-label">Published</div>
-              <div className="meta-value">17 Apr 2026</div>
+              <div className="meta-value">26 Apr 2026</div>
             </div>
           </div>
         </div>
